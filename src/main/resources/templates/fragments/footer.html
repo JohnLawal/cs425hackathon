@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="footer">
+		<footer class="main-footer"
+			style='background-color: #777; color: #ddd'>
+			<div class="container-fluid">
+
+				<div class='row'>
+					<div class='col-md-8'>
+						<p>&copy; 2019 HackathonApp by <a style="color:#ffff00" href="https://jlawal.com" target="_blank">John Lawal</a></p>
+
+						<div class="hidden">
+							Icons made by <a
+								href="http://www.flaticon.com/authors/madebyoliver"
+								title="Madebyoliver">Madebyoliver</a> from <a
+								href="https://www.flaticon.com" title="Flaticon">www.flaticon.com</a>
+							is licensed by <a
+								href="https://creativecommons.org/licenses/by/3.0/"
+								title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</footer>
+		<!-- ./wrapper -->
+		<!-- jQuery UI 1.11.4 -->
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+		<!-- Bootstrap 3.3.6 -->
+		<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+
+		<!-- Sparkline -->
+		<script th:src="@{/assets/plugins/sparkline/jquery.sparkline.min.js}"></script>
+		<!-- Select2 -->
+		<script th:src="@{/assets/plugins/select2/select2.full.min.js}"></script>
+		<!-- bootstrap datepicker -->
+		<script th:src="@{/assets/plugins/datepicker/bootstrap-datepicker.js}"></script>
+		<!-- bootstrap time picker -->
+		<script
+			th:src="@{/assets/plugins/timepicker/bootstrap-timepicker.min.js}"></script>
+		<!-- Slimscroll -->
+		<script
+			th:src="@{/assets/plugins/slimScroll/jquery.slimscroll.min.js}"></script>
+
+		<!-- App -->
+		<script th:src="@{/assets/dist/js/app.min.js}"></script>
+		<!-- JQuery Confirm -->
+		<script th:src="@{/assets/plugins/jQuery/jquery-confirm.js}"></script>
+		<script th:src="@{/assets/plugins/preloader/jquery.preloader.min.js}"></script>
+		<script
+			th:src="@{/assets/plugins/datatables/jquery.dataTables.min.js}"></script>
+		<script
+			th:src="@{/assets/plugins/datatables/dataTables.bootstrap.min.js}"></script>
+		<script th:src="@{/assets/dist/js/hackathonapp.js}"></script>
+
+	</div>
+	</div>
+
+
+</body>
+</html>
