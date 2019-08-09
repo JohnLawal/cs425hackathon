@@ -12,7 +12,7 @@ public class HomeController {
     @GetMapping(value = {"/", "/hackathonapp", "/hackathonapp/home"})
     public ModelAndView displayHomePage() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("pageTitle", "Welcome To ");
+        modelAndView.addObject("pageTitle", "Welcome To Golden Dome Market App");
         modelAndView.addObject("pageLinks", AppHelper.pageLinks);
         modelAndView.setViewName(AppValues.HOME_PAGE.val());
         return modelAndView;

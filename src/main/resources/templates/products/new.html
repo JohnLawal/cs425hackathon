@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+</head>
+<body class="hold-transition skin-yellow sidebar-mini">
+<!-- include header fragment -->
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- include aside fragment -->
+<div th:replace="~{fragments/aside :: aside}"></div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-user"></i> <span th:text="${pageTitle}"></span>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a th:href="@{${pageLinks.siteRoot}}"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active" th:text="${pageTitle}"></li>
+        </ol>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- row -->
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="row" th:if="${creationException} != ${null}">
+                    <div class="col-md-12">
+							<span
+                                    th:text="${creationException} " class="alert alert-danger">
+							</span>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-body table-responsive">
+                        <form id="newCustomerForm" class="form-horizontal form-material"
+                              th:action="@{${pageLinks.createProduct}}" th:object="${product}"
+                              method="post" role="form">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="customerId">Supplier</label>
+                                    <select id="customerId"
+                                            th:value="${product.supplier.supplierNumber}" name="supplier.supplierNumber"
+                                            class="form-control form-control-line select2" required>
+                                        <option th:each="supplier : ${suppliers}"
+                                                th:value="${supplier.supplierNumber}"
+                                                th:text="${supplier.supplierName} + ' - '+ ${supplier.supplierNumber}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="quantityInStock">Opening Quantity In Stock</label> <span
+                                        th:if="${#fields.hasErrors('quantityInStock')}"
+                                        th:errors="*{quantityInStock}" class="alert alert-danger"></span> <input
+                                        class="form-control form-control-line" required type="number" min="1"
+                                        step="1"
+                                        name="quantityInStock" id="quantityInStock"
+                                        th:value="${product.quantityInStock}"
+                                        placeholder="e.g 200">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="productName">Name</label> <span
+                                        th:if="${#fields.hasErrors('productName')}"
+                                        th:errors="*{productName}" class="alert alert-danger"></span> <input
+                                        class="form-control form-control-line" required type="text"
+                                        name="productName" id="productName"
+                                        th:value="${product.productName}"
+                                        placeholder="e.g Laptop">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="unitPrice">Unit Price in $</label> <span
+                                        th:if="${#fields.hasErrors('unitPrice')}"
+                                        th:errors="*{unitPrice}" class="alert alert-danger"></span> <input
+                                        class="form-control form-control-line" required type="number" min="0.1"
+                                        step="0.01"
+                                        name="unitPrice" id="unitPrice"
+                                        th:value="${product.unitPrice}"
+                                        placeholder="e.g 20.50">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label>Date Supplied:</label>
+                                    <div class="input-group date">
+											<span th:if="${#fields.hasErrors('dateSupplied')}"
+                                                  th:errors="*{dateSupplied}" class="alert alert-danger"></span>
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input autocomplete="false" required type="date"
+                                               name="dateSupplied" class="form-control pull-right"
+                                               id="dateSupplied" th:value="${product.dateSupplied}">
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary ">Create Product</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- include footer fragment -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

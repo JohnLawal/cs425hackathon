@@ -15,7 +15,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-bank"></i> <span th:text="${pageTitle}"></span>
+            <i class="fa fa-shopping-cart"></i> <span th:text="${pageTitle}"></span>
         </h1>
         <ol class="breadcrumb">
             <li><a th:href="@{${pageLinks.siteRoot}}"><i class="fa fa-home"></i>
@@ -32,12 +32,11 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-body table-responsive">
-                        <h3>Welcome, </h3>
+                        <h3>Welcome, Store Manager</h3>
                         <p>On this system, you can view the <a
-                                th:href="@{${pageLinks.viewCustomers}}">List of </a>, view the <a
-                                th:href="@{${pageLinks.viewAccounts}}">List of </a>.</p>
+                                th:href="@{${pageLinks.viewProducts}}">List of Products</a>.</p>
                         <p>
-                            You can also <a th:href="@{${pageLinks.createAccount}}">Create A New</a>
+                            You can also <a th:href="@{${pageLinks.createProduct}}">Create A New Product</a>
                         </p>
                         <p>For more features, click on any item on the menu</p>
                     </div>

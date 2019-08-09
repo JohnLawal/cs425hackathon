@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+</head>
+<body class="hold-transition skin-yellow sidebar-mini">
+<!-- include header fragment -->
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- include aside fragment -->
+<div th:replace="~{fragments/aside :: aside}"></div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-money"></i> <span th:text="${pageTitle}"></span>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a th:href="@{${pageLinks.siteRoot}}"><i class="fa fa-home"></i>
+                Home</a></li>
+            <li class="active" th:text="${pageTitle}"></li>
+        </ol>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <a style="margin: 10px" th:href="@{${pageLinks.createProduct}}"
+                   class="btn btn-warning">Create A Product</a>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-body table-responsive">
+                        <table id="tblRecords"
+                               class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Product Number</th>
+                                <th>Product Name</th>
+                                <th>Unit Price</th>
+                                <th>Quantity In Stock</th>
+                                <th>Supplier</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="product,iterStat : ${products}">
+                                <th scope="row" th:text="${iterStat.count}"></th>
+                                <td class="mailbox-name" th:text="${product.productNumber}"></td>
+                                <td class="mailbox-name" th:text="${product.productName}"></td>
+                                <td class="mailbox-name" th:text="${product.unitPriceAsMoney}"></td>
+                                <td class="mailbox-name" th:text="${product.quantityInStock}"></td>
+                                <td class="mailbox-name"
+                                    th:text="${product.supplier.supplierName}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="btn-group" style="float: right;margin: 8px;">
+                            <button type="button" class="btn btn-default">Pages:</button>
+                            <a type="button" th:each="i : ${#numbers.sequence(1, products.totalPages)}"
+                               th:class="${currentPageNo}==${i-1}?'btn btn-primary':'btn btn-default'"
+                               th:href="@{${pageLinks.viewProducts}(page=${i-1})}"
+                               th:text="${i}">
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>
