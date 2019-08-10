@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head}">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/master :: master-layout}">
+<head>
 </head>
-<body class="hold-transition skin-yellow sidebar-mini">
-<!-- include header fragment -->
-
-<div th:replace="~{fragments/header :: header}"></div>
-
-<!-- include aside fragment -->
-<div th:replace="~{fragments/aside :: aside}"></div>
+<body>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-
+<div layout:fragment="main-content" id="main-content" class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-money"></i> <span th:text="${pageTitle}"></span>
+            <i class="fa fa-shopping-cart"></i> <span th:text="${pageTitle}"></span>
         </h1>
         <ol class="breadcrumb">
             <li><a th:href="@{${pageLinks.siteRoot}}"><i class="fa fa-home"></i>
@@ -42,7 +36,6 @@
                                class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>S/N</th>
                                 <th>Product Number</th>
                                 <th>Product Name</th>
                                 <th>Unit Price</th>
@@ -52,8 +45,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="product,iterStat : ${products}">
-                                <th scope="row" th:text="${iterStat.count}"></th>
+                            <tr th:each="product : ${products}">
                                 <td class="mailbox-name" th:text="${product.productNumber}"></td>
                                 <td class="mailbox-name" th:text="${product.productName}"></td>
                                 <td class="mailbox-name" th:text="${product.unitPriceAsMoney}"></td>
@@ -83,7 +75,5 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<div th:replace="~{fragments/footer :: footer}"></div>
-
 </body>
 </html>

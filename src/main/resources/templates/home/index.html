@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head}">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/master :: master-layout}">
+<head>
 </head>
-<body class="hold-transition skin-yellow sidebar-mini">
-<!-- include header fragment -->
-
-<div th:replace="~{fragments/header :: header}"></div>
-
-<!-- include aside fragment -->
-<div th:replace="~{fragments/aside :: aside}"></div>
+<body>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-
+<div id="main-content" layout:fragment="main-content" class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -50,8 +45,7 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<!-- include footer fragment -->
-<div th:replace="~{fragments/footer :: footer}"></div>
+
 
 </body>
 </html>
